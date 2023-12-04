@@ -1,9 +1,16 @@
+FROM alpine:latest as unzipper
+
+RUN apt add unzip wget
+
+RUN mkdir /opt/ ; \
+    wget -O /opt/toxic_comment_model.zip https://www.dropbox.com/scl/fi/cri822iazusc8pl1q6hnp/toxic_comment_model.zip?rlkey=efuhz5o82a13h7szvkgqz4bhj&dl=0 \
+    unzip -o /opt/toxic_comment_model.zip
+
 FROM python:3.9
 
 WORKDIR /code
 
-RUN wget -O /code/toxic_comment_mode.zip https://www.dropbox.com/scl/fi/cri822iazusc8pl1q6hnp/toxic_comment_model.zip?rlkey=efuhz5o82a13h7szvkgqz4bhj&dl=0 \
-    && unzip -o /code/toxic_comment_model.zip
+COPY --from=unzipper /opt/ /code/
 
 COPY ./requirements.txt /code/requirements.txt
 
