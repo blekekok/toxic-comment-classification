@@ -22,5 +22,6 @@ async def predict(query: Query):
 
   return {
     "status": 200,
+    "request": text,
     "data": classes
   }
