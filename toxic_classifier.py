@@ -1,11 +1,27 @@
 import torch
+import os
+import wget
+import zipfile
 from transformers import BertTokenizer, BertForSequenceClassification
 from torch.utils.data import DataLoader, TensorDataset
 
+# Load Device
 device = torch.device('cpu')
 print(f'Currently using: {device}')
 
-model_name = './toxic_comment_model'
+# Download Model
+path = './toxic_comment_model'
+
+print("Checking if model exists...")
+if not os.path.exists(path):
+  print("Model doesn't exist, downloading now!")
+  # url = 'https://www.dropbox.com/scl/fi/cri822iazusc8pl1q6hnp/toxic_comment_model.zip?rlkey=efuhz5o82a13h7szvkgqz4bhj&dl=0'
+  # file = wget.download(url, out='./')
+  with zipfile.ZipFile('./toxic_comment_model.zip', 'r') as zip_ref:
+    zip_ref.extractall()
+
+# Load Model
+model_name = path
 Bert_Tokenizer = BertTokenizer.from_pretrained(model_name)
 Bert_Model = BertForSequenceClassification.from_pretrained(model_name).to(device)
 

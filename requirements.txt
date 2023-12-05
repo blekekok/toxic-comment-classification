@@ -1,5 +1,6 @@
-fastapi>=0.104.1,<0.104.1
-pydantic>=2.5.2,<2.5.2
-uvicorn>=0.24.0,<0.24.0
-torch>=2.1.1,<2.1.1
-transformers>=4.35.2,<4.35.2
+torch==2.1.1
+transformers==4.35.2
+uvicorn==0.24.0.post1
+fastapi==0.104.1
+pydantic==2.5.2
+pydantic-core==2.14.5
