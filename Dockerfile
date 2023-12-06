@@ -2,7 +2,9 @@ FROM alpine:latest AS unzipper
 
 RUN apk add wget unzip
 
-RUN wget -O toxic_comment_model.zip https://www.dropbox.com/scl/fi/cri822iazusc8pl1q6hnp/toxic_comment_model.zip?rlkey=efuhz5o82a13h7szvkgqz4bhj | unzip -o toxic_comment_model.zip
+RUN wget -O toxic_comment_model.zip https://drive.google.com/uc?id=10chBXaDiOA6nlH2n17DXMqZ3w-ow3WsD
+
+RUN unzip -o toxic_comment_model.zip
 
 FROM python:3.9
 
