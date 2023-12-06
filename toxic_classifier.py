@@ -19,11 +19,17 @@ if not os.path.exists(path):
   zip_file = 'toxic_comment_model.zip'
   url = 'https://drive.google.com/uc?id=10chBXaDiOA6nlH2n17DXMqZ3w-ow3WsD'
   output = zip_file
+
+  print('Downloading the model...')
   gdown.download(url, output, quiet=False)
+
+  print('Unzipping the model...')
   with zipfile.ZipFile(f'./{zip_file}', 'r') as zip_ref:
     zip_ref.extractall()
 
 # Load Model
+print('Loading the model...')
+
 model_name = path
 Bert_Tokenizer = BertTokenizer.from_pretrained(model_name)
 Bert_Model = BertForSequenceClassification.from_pretrained(model_name).to(device)
