@@ -2,9 +2,7 @@ FROM alpine:latest AS unzipper
 
 RUN apk add wget unzip
 
-RUN wget -O toxic_comment_model.zip https://drive.google.com/uc?id=10chBXaDiOA6nlH2n17DXMqZ3w-ow3WsD
-
-RUN unzip -o toxic_comment_model.zip
+RUN wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=10chBXaDiOA6nlH2n17DXMqZ3w-ow3WsD' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=10chBXaDiOA6nlH2n17DXMqZ3w-ow3WsD" -O toxic_comment_model.zip && rm -rf /tmp/cookies.txt && unzip -o toxic_comment_model.zip
 
 FROM python:3.9
 
