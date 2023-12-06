@@ -1,8 +1,8 @@
 FROM alpine:latest AS unzipper
 
-RUN apk add wget
+RUN apk add wget unzip
 
-RUN wget -O toxic_comment_mode.zip https://www.dropbox.com/scl/fi/cri822iazusc8pl1q6hnp/toxic_comment_model.zip?rlkey=efuhz5o82a13h7szvkgqz4bhj
+RUN wget -O toxic_comment_model.zip https://www.dropbox.com/scl/fi/cri822iazusc8pl1q6hnp/toxic_comment_model.zip?rlkey=efuhz5o82a13h7szvkgqz4bhj | unzip -o toxic_comment_model.zip
 
 FROM python:3.9
 
