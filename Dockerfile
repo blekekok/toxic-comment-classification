@@ -11,7 +11,9 @@ WORKDIR /code
 
 COPY ./ /code
 
-COPY --from=unzipper /pytorch_model.bin /code/toxic_comment_model/
+COPY --from=unzipper /pytorch_model.bin /code/toxic_comment_model/pytorch_model.bin
+
+RUN ls -a /code
 
 RUN ls -a /code/toxic_comment_model
 
