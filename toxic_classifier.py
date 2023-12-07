@@ -12,23 +12,23 @@ print(f'Currently using: {device}')
 # Download Model
 path = './toxic_comment_model'
 
-print("Checking if model exists...")
-if not os.path.exists(path):
-  print("Model doesn't exist, downloading now!")
+# print("Checking if model exists...")
+# if not os.path.exists(path):
+#   print("Model doesn't exist, downloading now!")
 
-  zip_file = 'toxic_comment_model.zip'
-  url = 'https://drive.google.com/uc?id=10chBXaDiOA6nlH2n17DXMqZ3w-ow3WsD'
-  output = zip_file
+#   zip_file = 'toxic_comment_model.zip'
+#   url = 'https://drive.google.com/uc?id=10chBXaDiOA6nlH2n17DXMqZ3w-ow3WsD'
+#   output = zip_file
 
-  print('Downloading the model...')
-  gdown.download(url, output, quiet=False)
+#   print('Downloading the model...')
+#   gdown.download(url, output, quiet=False)
 
-  print('Unzipping the model...')
-  with zipfile.ZipFile(f'./{zip_file}', 'r') as zip_ref:
-    zip_ref.extractall()
+#   print('Unzipping the model...')
+#   with zipfile.ZipFile(f'./{zip_file}', 'r') as zip_ref:
+#     zip_ref.extractall()
 
-# Load Model
-print('Loading the model...')
+# # Load Model
+# print('Loading the model...')
 
 model_name = path
 Bert_Tokenizer = BertTokenizer.from_pretrained(model_name)
