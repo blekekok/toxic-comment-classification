@@ -8,9 +8,9 @@ FROM python:3.9
 
 WORKDIR /code
 
-COPY --from=unzipper / /code/
+COPY --from=unzipper /toxic_comment_model.zip /code/toxic_comment_model.zip
 
-RUN ls -a
+RUN ls -a /code
 
 COPY ./requirements.txt /code/requirements.txt
 
